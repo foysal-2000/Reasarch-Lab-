@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('supervisors', function (Blueprint $table) {
+            $table->id();
+            $table->string('supervisor_name');
+            $table->string('desgination');
+            $table->string('email')->unique();
+            $table->string('photo')->nullable();
+            $table->string('university');
+            $table->string('department');
+            $table->string('scholar_link')->nullable();
+            $table->string('linkdin')->nullable();
+            $table->softDeletes();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('supervisors');
+    }
+};
